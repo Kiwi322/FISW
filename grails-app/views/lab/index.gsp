@@ -50,6 +50,7 @@
 				</g:each>
 				</tbody>
 			</table>
+			<g:if test="${Lab.countByAccountLocked(true) >0}" > EXISTEN USUARIOS SIN ACEPTAR</g:if>
 			<div class="pagination">
 				<g:paginate total="${labInstanceCount ?: 0}" />
 			</div>

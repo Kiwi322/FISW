@@ -1,5 +1,5 @@
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="usuario.Lab" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-<sec:link controller="lab" expression="hasRole('ROLE_ADMIN')">Modificar Usuarios</sec:link>
-<sec:link controller="lab" expression="hasRole('ROLE_USER')">Ver perfiles de usuarios</sec:link>
+<g:if test="${Lab.countByAccountLocked(true) >0}" > Solicitud de cuenta pendientes</g:if>
+<sec:link controller="lab" expression="hasRole('ROLE_ADMIN')"><p>Modificar Usuarios</p></sec:link>
 </body>
 </html>
