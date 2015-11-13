@@ -18,15 +18,31 @@
 	</head>
 	<body>
 	<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a>
-		<sec:ifLoggedIn>
-			Welcome Back <sec:username/>!
-		</sec:ifLoggedIn>
-		<sec:ifNotLoggedIn>
-			<g:link controller='login' action='auth'>Login</g:link>
-		</sec:ifNotLoggedIn>
-	</div>
+		<sec:ifLoggedIn>Welcome Back <sec:username/>!</sec:ifLoggedIn>
+		<div class="nav" role="navigation">
+		<ul>
+			<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+			<sec:ifNotLoggedIn>
+				<li><g:link controller='login' action='auth'>Login</g:link></li>
+				<li><g:link controller='lab' action='create'>Crear Cuenta</g:link></li>
+			</sec:ifNotLoggedIn>
+			<sec:ifAnyGranted roles="ROLE_ADMIN">
+				<li><g:link controller='admin' action='index'>Menu administrador</g:link></li>
+				<li><g:link controller='lab' action='index'>
+					<g:if test="${usuario.Lab.countByAccountLocked(true) >0}" > <b>Usuarios Pendientes</b></g:if>
+					<g:else>Ver Usuarios</g:else>
+				</g:link></li>
+			</sec:ifAnyGranted>
+			<sec:ifAnyGranted roles="ROLE_USER">
+				<li><g:link controller='lab' action='index'>Ver Usuarios</g:link></li>
+			</sec:ifAnyGranted>
+			<sec:ifLoggedIn>
+				<li><g:link controller="logout"><g:message code="common.logout" default="Logout"/></g:link></li>
+			</sec:ifLoggedIn>
+		</ul>
+	</div></div>
 	<g:layoutBody/>
-	<div class="footer" role="contentinfo"></div><sec:ifLoggedIn><g:link controller="logout"><g:message code="common.logout" default="Logout"/></g:link> </sec:ifLoggedIn>
+	<div class="footer" role="contentinfo"></div>
 	<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 	</body>
 </html>
