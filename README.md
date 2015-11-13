@@ -15,7 +15,7 @@ Intrucciones primera entrega:
     
     2.Logearse en "admin" "pass" o en "user" "pass" para la experiencia del administrador o usuario respectivamente
     
-    3.Al crear un usuario desde una cuenta de usuario o sin cuenta esta cuenta tiene que ser autorizada por un administrador
+    3.Al crear un usuario desde una cuenta de usuario o sin cuenta, esta tiene que ser autorizada por un administrador
     
     4.Cuanto falta autorizar una cuenta se pone en negrita el link del menu respectivo, y se tiene que entrar a editar el usuario, especificamente el campo: "accountLocked"
     
