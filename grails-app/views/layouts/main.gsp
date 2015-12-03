@@ -31,6 +31,7 @@
 				<li><g:link controller='lab' action='index'>
 					<g:if test="${usuario.Lab.countByAccountLocked(true) >0}" > <b>Usuarios Pendientes</b></g:if>
 					<g:else>Ver Usuarios</g:else>
+					<li><g:link controller='lab' action='create'>Crear Cuenta</g:link></li>
 				</g:link></li>
 			</sec:ifAnyGranted>
 			<sec:ifAnyGranted roles="ROLE_USER">
