@@ -6,7 +6,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import usuario.*
 @Transactional(readOnly = true)
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+@Secured(['ROLE_USER','ROLE_ADMIN','ROLE_ALAB'])
 class LabController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -22,6 +22,7 @@ class LabController {
     def create() {
         respond new Lab(params)
     }
+    @Secured("IS_AUTHENTICATED_ANONYMOUSLY")
     @Transactional
     def save(Lab labInstance) {
         if (labInstance == null) {
@@ -36,8 +37,7 @@ class LabController {
 
         labInstance.save flush:true
         Rol aux=Rol.find{authority=='ROLE_USER'}
-        //def asdf=Rol.findById(id:'1')
-        UsuarioRol.create labInstance,aux,true
+        UsuarioRol.create labInstance,aux
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'lab.label', default: 'Lab'), labInstance.id])
@@ -80,7 +80,7 @@ class LabController {
             notFound()
             return
         }
-
+        labInstance.removeFromUsuario(labInstance)
         labInstance.delete flush:true
 
         request.withFormat {
