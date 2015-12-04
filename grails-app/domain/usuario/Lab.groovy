@@ -14,4 +14,7 @@ class Lab extends Usuario {
         this.nombres = nombres
         this.apellidos = apellidos
     }
+    def beforeDelete() {
+        UsuarioRol.removeAll(this)
+    } 
 }

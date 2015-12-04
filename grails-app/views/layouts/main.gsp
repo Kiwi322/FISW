@@ -18,13 +18,13 @@
 	</head>
 	<body>
 	<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a>
-		<sec:ifLoggedIn>Welcome Back <sec:username/>!</sec:ifLoggedIn>
+		<sec:ifLoggedIn> <g:message code="default.welcome.message"/> <sec:username/>!</sec:ifLoggedIn>
 		<div class="nav" role="navigation">
 		<ul>
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 			<sec:ifNotLoggedIn>
-				<li><g:link controller='login' action='auth'>Login</g:link></li>
-				<li><g:link controller='lab' action='create'>Crear Cuenta</g:link></li>
+				<li><g:link controller='login' action='auth'><g:message code="default.button.login.label"/> </g:link></li>
+				<li><g:link controller='lab' action='create'><g:message code="default.create.label.user"/> </g:link></li>
 			</sec:ifNotLoggedIn>
 			<sec:ifAnyGranted roles="ROLE_ADMIN">
 				<li><g:link controller='admin' action='index'>Menu administrador</g:link></li>

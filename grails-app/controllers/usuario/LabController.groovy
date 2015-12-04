@@ -80,7 +80,7 @@ class LabController {
             notFound()
             return
         }
-        labInstance.removeFromUsuario(labInstance)
+        
         labInstance.delete flush:true
 
         request.withFormat {
