@@ -17,7 +17,7 @@
 		<g:layoutHead/>
 	</head>
 	<body>
-	<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a>
+	<div id="grailsLogo" role="banner"><a href="http://localhost:8080/laboratorio"><asset:image src="grails_logo.png" alt="Grails"/></a>
 		<sec:ifLoggedIn> <g:message code="default.welcome.message"/> <sec:username/>!</sec:ifLoggedIn>
 		<div class="nav" role="navigation">
 		<ul>
