@@ -8,4 +8,7 @@ class HomeController {
     def index() {
         render view: "home"
     }
+    def history() {
+        render view: "history"
+    }
 }

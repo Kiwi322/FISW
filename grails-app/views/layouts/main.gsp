@@ -13,25 +13,26 @@
 		<link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
   		<asset:stylesheet src="application.css"/>
+  		<asset:stylesheet src="main.css"/>
 		<asset:javascript src="application.js"/>
 		<g:layoutHead/>
 	</head>
 	<body>
-	<div id="grailsLogo" role="banner"><a href="http://localhost:8080/laboratorio"><asset:image src="grails_logo.png" alt="Grails"/></a>
+	<div id="LogoLab" role="banner"><a id="LogoText" href="http://localhost:8080/laboratorio"> Laboratorio de Microbiología Molecular y Biotecnología Ambiental</a>
 		<sec:ifLoggedIn> <g:message code="default.welcome.message"/> <sec:username/>!</sec:ifLoggedIn>
 		<div class="nav" role="navigation">
 		<ul>
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 			<sec:ifNotLoggedIn>
 				<li><g:link controller='login' action='auth'><g:message code="default.button.login.label"/> </g:link></li>
-				<li><g:link controller='lab' action='create'><g:message code="default.create.label.user"/> </g:link></li>
+				<li><g:link controller='lab' action='create'><g:message code="default.create.user.label"/> </g:link></li>
 			</sec:ifNotLoggedIn>
 			<sec:ifAnyGranted roles="ROLE_ADMIN">
-				<li><g:link controller='admin' action='index'>Menu administrador</g:link></li>
+				<li><g:link controller='admin' action='index'><g:message code="default.administrator.label"/></g:link></li>
 				<li><g:link controller='lab' action='index'>
 					<g:if test="${usuario.Lab.countByAccountLocked(true) >0}" > <b>Usuarios Pendientes</b></g:if>
-					<g:else>Ver Usuarios</g:else>
-					<li><g:link controller='lab' action='create'>Crear Cuenta</g:link></li>
+					<g:else> <g:message code="default.user.label"/> </g:else>
+				<li><g:link controller='lab' action='create'><g:message code="default.create.user.label"/> </g:link></li>
 				</g:link></li>
 			</sec:ifAnyGranted>
 			<sec:ifAnyGranted roles="ROLE_USER">
