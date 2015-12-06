@@ -62,12 +62,22 @@
 				</g:if>
 			
 			</ol>
+			<g:if test="${labInstance.username.toString() == sec.loggedInUserInfo(field: 'username').toString()}">
 			<g:form url="[resource:labInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${labInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
+			</g:if>
+			<sec:ifAnyGranted roles="ROLE_ADMIN">
+			<g:form url="[resource:labInstance, action:'delete']" method="DELETE">
+				<fieldset class="buttons">
+					<g:link class="edit" action="edit" resource="${labInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+				</fieldset>
+			</g:form>
+			</sec:ifAnyGranted>
 		</div>
 	</body>
 </html>
