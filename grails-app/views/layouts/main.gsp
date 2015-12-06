@@ -30,13 +30,17 @@
 			<sec:ifAnyGranted roles="ROLE_ADMIN">
 				<li><g:link controller='admin' action='index'><g:message code="default.administrator.label"/></g:link></li>
 				<li><g:link controller='lab' action='index'>
-					<g:if test="${usuario.Lab.countByAccountLocked(true) >0}" > <b>Usuarios Pendientes</b></g:if>
+					<g:if test="${usuario.Lab.countByAccountLocked(true) >0}" > <b><g:message code="default.pending.user.label"/> </b></g:if>
 					<g:else> <g:message code="default.user.label"/> </g:else>
 				<li><g:link controller='lab' action='create'><g:message code="default.create.user.label"/> </g:link></li>
+				<li><g:link controller='document' action='list'><g:message code="default.create.document.label"/></g:link></li>
 				</g:link></li>
 			</sec:ifAnyGranted>
 			<sec:ifAnyGranted roles="ROLE_USER">
-				<li><g:link controller='lab' action='index'>Ver Usuarios</g:link></li>
+				<li><g:link controller='lab' action='index'><g:message code="default.user.label"/>s</g:link></li>
+				<li><g:link controller='lab' action="show" id="${sec.loggedInUserInfo(field: 'id')}"><g:message code="default.profile.label"/>
+				</g:link></li>
+				<li><g:link controller='document' action='list'><g:message code="default.create.document.label"/></g:link></li>
 			</sec:ifAnyGranted>
 			<sec:ifLoggedIn>
 				<li><g:link controller="logout"><g:message code="common.logout" default="Logout"/></g:link></li>

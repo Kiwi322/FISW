@@ -2,7 +2,7 @@ package laboratorio
 
 import grails.plugin.springsecurity.annotation.Secured  
 
-@Secured(['ROLE_ADMIN'])
+@Secured(['IS_AUTHENTICATED_FULLY'])
 class DocumentController {
 
     def index() {
