@@ -11,7 +11,7 @@ El trabajo se está desarrollando en Grails.
 
 Intrucciones primera entrega:
 
-    1.Al correr el programa por consola en grails(luego de adaptar la base de datos a la suya local), se tiene que entrar a "http://localhost:8080/laboratorio"
+    1.Al correr el programa por consola en grails(luego de adaptar la base de datos a la suya local y cambiar la posicion de los archivos subidos al servidor en DataSource y Config respectivamente), se tiene que entrar a "http://localhost:8080/laboratorio"
     
     2.Logearse en "admin" "pass" o en "user" "pass" para la experiencia del administrador o usuario respectivamente
     
