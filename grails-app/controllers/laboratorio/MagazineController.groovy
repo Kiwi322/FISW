@@ -4,7 +4,7 @@ import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['IS_AUTHENTICATED_FULLY'])
 class MagazineController {
-
+    def springSecurityService
     def index() {
         render view: "create"
     }
@@ -43,6 +43,7 @@ class MagazineController {
             magazineInstance.filename = file.originalFilename
             magazineInstance.fullPath = grailsApplication.config.uploadFolder + magazineInstance.filename
             file.transferTo(new File(magazineInstance.fullPath))
+            magazineInstance.owner= springSecurityService.getCurrentUser()
             magazineInstance.save()
         }
         redirect (action:'list')

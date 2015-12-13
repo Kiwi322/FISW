@@ -44,7 +44,6 @@ class TesisController {
             tesisInstance.fullPath = grailsApplication.config.uploadFolder + tesisInstance.filename
             file.transferTo(new File(tesisInstance.fullPath))
             tesisInstance.owner= springSecurityService.getCurrentUser()
-            System.out.println(tesisInstance.owner);
             tesisInstance.save()
 
 

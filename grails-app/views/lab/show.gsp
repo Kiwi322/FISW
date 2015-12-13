@@ -1,4 +1,3 @@
-
 <%@ page import="usuario.Lab" %>
 <!DOCTYPE html>
 <html>
@@ -107,7 +106,51 @@
 				</li>
 				</g:if>
 				</sec:ifAnyGranted>
+				Tesis
+				<ul>
+					<g:each in="${labInstance.tesis}" var="tesisInstance">
+						<li>	
+							<span class="property-value" aria-labelledby="apellidos-label"><g:fieldValue bean="${tesisInstance}" field="name"/></span>
 
+						</li>
+					</g:each>
+				</ul>
+Libros
+				<ul>
+					<g:each in="${labInstance.books}" var="bookInstance">
+						<li>	
+							<span class="property-value" aria-labelledby="apellidos-label"><g:fieldValue bean="${bookInstance}" field="isbn"/></span>
+
+						</li>
+					</g:each>
+				</ul>				
+Conferencias
+				<ul>
+					<g:each in="${labInstance.conferences}" var="conferenceInstance">
+						<li>	
+							<span class="property-value" aria-labelledby="apellidos-label"><g:fieldValue bean="${conferenceInstance}" field="name"/></span>
+
+						</li>
+					</g:each>
+				</ul>
+Revistas
+				<ul>
+					<g:each in="${labInstance.magazines}" var="magazineInstance">
+						<li>	
+							<span class="property-value" aria-labelledby="apellidos-label"><g:fieldValue bean="${magazineInstance}" field="area"/></span>
+
+						</li>
+					</g:each>
+				</ul>
+Proyectos
+				<ul>
+					<g:each in="${labInstance.projects}" var="projectInstance">
+						<li>	
+							<span class="property-value" aria-labelledby="apellidos-label"><g:fieldValue bean="${projectInstance}" field="name"/></span>
+
+						</li>
+					</g:each>
+				</ul>
 			
 			</ol>
 			<g:if test="${labInstance.username.toString() == sec.loggedInUserInfo(field: 'username').toString()}">
@@ -129,3 +172,4 @@
 		</div>
 	</body>
 </html>
+

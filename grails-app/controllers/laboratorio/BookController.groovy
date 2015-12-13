@@ -4,7 +4,7 @@ import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['IS_AUTHENTICATED_FULLY'])
 class BookController {
-
+    def springSecurityService
     def index() {
         render view: "create"
     }
@@ -43,6 +43,7 @@ class BookController {
             bookInstance.filename = file.originalFilename
             bookInstance.fullPath = grailsApplication.config.uploadFolder + bookInstance.filename
             file.transferTo(new File(bookInstance.fullPath))
+            bookInstance.owner= springSecurityService.getCurrentUser()
             bookInstance.save()
         }
         redirect (action:'list')

@@ -4,7 +4,7 @@ import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['IS_AUTHENTICATED_FULLY'])
 class ConferenceController {
-
+    def springSecurityService
     def index() {
         render view: "create"
     }
@@ -43,6 +43,7 @@ class ConferenceController {
             conferenceInstance.filename = file.originalFilename
             conferenceInstance.fullPath = grailsApplication.config.uploadFolder + conferenceInstance.filename
             file.transferTo(new File(conferenceInstance.fullPath))
+            conferenceInstance.owner= springSecurityService.getCurrentUser()
             conferenceInstance.save()
         }
         redirect (action:'list')

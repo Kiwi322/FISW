@@ -33,14 +33,17 @@
 					<g:if test="${usuario.Lab.countByAccountLocked(true) >0}" > <b><g:message code="default.pending.user.label"/> </b></g:if>
 					<g:else> <g:message code="default.user.label"/> </g:else>
 				<li><g:link controller='lab' action='create'><g:message code="default.create.user.label"/> </g:link></li>
-				<li><g:link controller='document' action='list'><g:message code="default.create.document.label"/></g:link></li>
 				</g:link></li>
 			</sec:ifAnyGranted>
 			<sec:ifAnyGranted roles="ROLE_USER">
 				<li><g:link controller='lab' action='index'><g:message code="default.user.label"/>s</g:link></li>
 				<li><g:link controller='lab' action="show" id="${sec.loggedInUserInfo(field: 'id')}"><g:message code="default.profile.label"/>
 				</g:link></li>
-				<li><g:link controller='document' action='list'><g:message code="default.create.document.label"/></g:link></li>
+				<li><g:link controller='tesis' action='list'><g:message code="default.create.tesis.label"/></g:link></li>
+				<li><g:link controller='magazine' action='list'><g:message code="default.create.magazine.label"/></g:link></li>
+				<li><g:link controller='book' action='list'><g:message code="default.create.book.label"/></g:link></li>
+				<li><g:link controller='conference' action='list'><g:message code="default.create.conference.label"/></g:link></li>
+				<li><g:link controller='project' action='list'><g:message code="default.create.project.label"/></g:link></li>
 			</sec:ifAnyGranted>
 			<sec:ifLoggedIn>
 				<li><g:link controller="logout"><g:message code="common.logout" default="Logout"/></g:link></li>
