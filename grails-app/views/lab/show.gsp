@@ -33,12 +33,48 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${labInstance?.accountLocked}">
+
+				<g:if test="${labInstance?.area}">
 				<li class="fieldcontain">
-					<span id="accountLocked-label" class="property-label"><g:message code="lab.accountLocked.label" default="Account Locked" /></span>
+					<span id="area-label" class="property-label"><g:message code="lab.area.label" default="Investigation Area" /></span>
 					
-						<span class="property-value" aria-labelledby="accountLocked-label"><g:formatBoolean boolean="${labInstance?.accountLocked}" /></span>
+						<span class="property-value" aria-labelledby="area-label"><g:fieldValue bean="${labInstance}" field="area"/></span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${labInstance?.carrer}">
+				<li class="fieldcontain">
+					<span id="carrer-label" class="property-label"><g:message code="lab.carrer.label" default="Carrer" /></span>
+					
+						<span class="property-value" aria-labelledby="carrer-label"><g:fieldValue bean="${labInstance}" field="carrer"/></span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${labInstance?.country}">
+				<li class="fieldcontain">
+					<span id="country-label" class="property-label"><g:message code="lab.country.label" default="Country" /></span>
+					
+						<span class="property-value" aria-labelledby="country-label"><g:fieldValue bean="${labInstance}" field="country"/></span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${labInstance?.position}">
+				<li class="fieldcontain">
+					<span id="position-label" class="property-label"><g:message code="lab.position.label" default="Position" /></span>
+					
+						<span class="property-value" aria-labelledby="position-label"><g:fieldValue bean="${labInstance}" field="position"/></span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${labInstance?.university}">
+				<li class="fieldcontain">
+					<span id="university-label" class="property-label"><g:message code="lab.university.label" default="Univesity" /></span>
+					
+						<span class="property-value" aria-labelledby="university-label"><g:fieldValue bean="${labInstance}" field="university"/></span>
 					
 				</li>
 				</g:if>
@@ -51,6 +87,16 @@
 					
 				</li>
 				</g:if>
+
+				<sec:ifAnyGranted roles="ROLE_ADMIN">
+				<g:if test="${labInstance?.accountLocked}">
+				<li class="fieldcontain">
+					<span id="accountLocked-label" class="property-label"><g:message code="lab.accountLocked.label" default="Account Locked" /></span>
+					
+						<span class="property-value" aria-labelledby="accountLocked-label"><g:formatBoolean boolean="${labInstance?.accountLocked}" /></span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${labInstance?.enabled}">
 				<li class="fieldcontain">
@@ -60,6 +106,8 @@
 					
 				</li>
 				</g:if>
+				</sec:ifAnyGranted>
+
 			
 			</ol>
 			<g:if test="${labInstance.username.toString() == sec.loggedInUserInfo(field: 'username').toString()}">
