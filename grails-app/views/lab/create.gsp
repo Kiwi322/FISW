@@ -2,13 +2,11 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'lab.label', default: 'Lab')}" />
-		<title><g:message code="default.create.label" args="[entityName]" /></title>
+		<title><g:message code="default.sign.up.label" /></title>
 	</head>
 	<body>
-		<a href="#create-lab" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div id="create-lab" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+		 <section class="page container">
+			<!--<h1><g:message code="default.sign.up.label"  /></h1>-->
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -19,14 +17,25 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:labInstance, action:'save']" >
-				<fieldset class="form">
+			
+				<g:form url="[resource:labInstance, action:'save']" class="form-horizontal"  >
+				 <div class="container">
+				 <div class="alert alert-block alert-info">
+                        <p>
+                            <g:message code="default.sign.up.message"/>
+                        </p>
+                    </div>
+                   
 					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-				</fieldset>
-			</g:form>
-		</div>
+				
+
+					<footer class="form-actions">
+	                        <g:submitButton  type="submit" class="btn btn-primary" name="create"  value="${message(code: 'default.button.create.label', default: 'Create')}" />
+	                        <a href="../" class="btn" value="CANCEL"><g:message code="default.button.cancel.label"/></a>	                       
+	                </footer>
+	             </div>
+				</g:form>
+			</div>
+		</section>	
 	</body>
 </html>

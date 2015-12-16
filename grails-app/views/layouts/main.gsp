@@ -74,6 +74,11 @@
 						<ul class="nav pull-right">
 							<li>
 								<sec:ifNotLoggedIn>
+									<g:link controller='lab' action='create'><g:message code="default.button.sign.up.label"/> </g:link>
+								</sec:ifNotLoggedIn>
+							</li>
+							<li>
+								<sec:ifNotLoggedIn>
 									<g:link controller='login' action='auth'><g:message code="default.button.login.label"/> </g:link>
 								</sec:ifNotLoggedIn>
 								<sec:ifLoggedIn>
@@ -122,8 +127,8 @@
 							</g:link>
 						</li>
 						<li>
-							<g:link controller='document' action='list'>
-								<i class="icon-cogs icon-large"></i> <g:message code="default.create.document.label"/>
+							<g:link controller='tesis' action='list'>
+								<i class="icon-cogs icon-large"></i> <g:message code="default.create.tesis.label"/>
 							</g:link>
 						</li>
 						<li>
@@ -143,7 +148,7 @@
 				<section class="nav nav-page body-nav-fixed">
 			</sec:ifAnyGranted>
 			<sec:ifAnyGranted roles="ROLE_USER">
-				<section class="nav nav-page body-nav-fixed subNavBar-fixed	">
+				<section class="nav nav-page body-nav-fixed subNavBar-fixed" style="z-index:99;">
 			</sec:ifAnyGranted>
 			<sec:ifNotLoggedIn>
 				<section class="nav nav-page body-nav-fixed subNavBar-fixed	">
@@ -152,7 +157,7 @@
 					<div class="row">
 						<div class="span7">
 							<header class="page-header">
-								<h3>Pagina Principal<br/>
+								<h3><g:layoutTitle default="Some Title" /><br/>
 									<small>Additional Bootstrap Components</small>
 								</h3>
 							</header>
@@ -165,12 +170,20 @@
 									</li>
 								</ul>
 								<ul class="nav nav-tabs">
-								<g:if test="${ request.forwardURI == ''}"> <li class="active"> </g:if>
+								<g:if test="${ request.forwardURI == '/'}"> <li class="active"> </g:if>
 								<g:else><li></g:else>
 										<a href="http://localhost:8080"><i class="icon-home"></i><g:message code="default.home.label"/></a>
 									</li>
-									<li><a href="#">Maps</a></li>
-									<li><a href="#">Admin</a></li>
+									<sec:ifAnyGranted roles="ROLE_USER">
+										<g:if test="${ request.forwardURI == '/lab/index'}"> <li class="active"> </g:if>
+										<g:else><li></g:else>
+										<g:link controller='lab' action='index'><g:message code="default.user.label"/>s</g:link></li>
+
+										<g:if test="${ request.forwardURI == '/lab/show/4'}"> <li class="active"> </g:if>
+										<g:else><li></g:else>
+										<g:link controller='lab' action="show" id="${sec.loggedInUserInfo(field: 'id')}"><g:message code="default.profile.label"/>
+										</g:link></li>
+									</sec:ifAnyGranted>
 								</ul>
 							</div>
 						</div>
@@ -183,16 +196,16 @@
             Loading&hellip;
         </div>
 
-        <footer class="application-footer">
+        <!--<footer class="application-footer">
             <div class="container">
-                <p>Application Footer</p>
+                <p>LABMMDA</p>
                 <div class="disclaimer">
-                    <p>This is an example disclaimer. All right reserved.</p>
-                    <p>Copyright © keaplogik 2011-2012</p>
+                    <p>All right reserved.</p>
+                    <p>Copyright © LABMMDA 2015</p>
                 </div>
             </div>
-        </footer>
-        <g:message code="default.administrator.label"/>
+        </footer>-->
+       
 
 
 			<script type="text/javascript">

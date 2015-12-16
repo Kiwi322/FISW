@@ -3619,15 +3619,13 @@ input[type="submit"].btn.btn-mini {
 }
 .nav-tabs > li {
   margin-bottom: -1px;
+  margin-left: 2px; 
 }
 .nav-tabs > li > a {
   padding-top: 8px;
   padding-bottom: 8px;
   line-height: 20px;
-  border: 1px solid transparent;
-  -webkit-border-radius: 4px 4px 0 0;
-  -moz-border-radius: 4px 4px 0 0;
-  border-radius: 4px 4px 0 0;
+  border-radius: 4px;
 }
 .nav-tabs > li > a:hover {
   border-color: #eeeeee #eeeeee #dddddd;
@@ -3636,7 +3634,6 @@ input[type="submit"].btn.btn-mini {
 .nav-tabs > .active > a:hover {
   color: #555555;
   background-color: #ffffff;
-  border: 1px solid #ddd;
   border-bottom-color: transparent;
   cursor: default;
 }
@@ -7135,9 +7132,9 @@ table.tablesorter .headerSortUp:after {
 .nav-page .nav.nav-pills {
   clear: none;
   margin-bottom: 0;
-  padding-top: 31px;
+  padding-top: 17px;
   float: left;
-  border-bottom: 1px solid black;
+  border-bottom: none;
 }
 .nav-page .nav.nav-tabs li,
 .nav-page .nav.nav-pills li,
@@ -7147,34 +7144,16 @@ table.tablesorter .headerSortUp:after {
 }
 .nav-page .nav.nav-tabs .active > a,
 .nav-page .nav.nav-pills .active > a {
-  background-color: #047ed0;
+  background-color: #3F8FC5;
   background-image: -moz-linear-gradient(top, #048ae4, #036cb2);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#048ae4), to(#036cb2));
-  background-image: -webkit-linear-gradient(top, #048ae4, #036cb2);
-  background-image: -o-linear-gradient(top, #048ae4, #036cb2);
-  background-image: linear-gradient(to bottom, #048ae4, #036cb2);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff048ae4', endColorstr='#ff036cb2', GradientType=0);
-  border-bottom: 1px solid #20a3fb;
-  -webkit-box-shadow: outset 1px 1px 2px #52b8fc;
-  -moz-box-shadow: outset 1px 1px 2px #52b8fc;
-  box-shadow: outset 1px 1px 2px #52b8fc;
   color: #ffffff;
 }
 .nav-page .nav.nav-tabs li > a,
 .nav-page .nav.nav-pills li > a,
 .nav-page .nav.nav-tabs li > button,
 .nav-page .nav.nav-pills li > button {
-  border: 1px solid #012f4e;
-  background-color: #048ae4;
-  background-image: -moz-linear-gradient(top, #048ae4, #048ae4);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#048ae4), to(#048ae4));
-  background-image: -webkit-linear-gradient(top, #048ae4, #048ae4);
-  background-image: -o-linear-gradient(top, #048ae4, #048ae4);
-  background-image: linear-gradient(to bottom, #048ae4, #048ae4);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff048ae4', endColorstr='#ff048ae4', GradientType=0);
-  border-bottom: 1px solid #84ccfd;
+ 
+  background-color: #406076;
   color: #eeeeee;
   padding-left: 30px;
   padding-right: 30px;
@@ -7184,17 +7163,6 @@ table.tablesorter .headerSortUp:after {
 .nav-page .nav.nav-tabs li > button:hover,
 .nav-page .nav.nav-pills li > button:hover {
   background-color: #047ed0;
-  background-image: -moz-linear-gradient(top, #048ae4, #036cb2);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#048ae4), to(#036cb2));
-  background-image: -webkit-linear-gradient(top, #048ae4, #036cb2);
-  background-image: -o-linear-gradient(top, #048ae4, #036cb2);
-  background-image: linear-gradient(to bottom, #048ae4, #036cb2);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff048ae4', endColorstr='#ff036cb2', GradientType=0);
-  border-bottom: 1px solid #20a3fb;
-  -webkit-box-shadow: outset 1px 1px 2px #52b8fc;
-  -moz-box-shadow: outset 1px 1px 2px #52b8fc;
-  box-shadow: outset 1px 1px 2px #52b8fc;
 }
 .nav-page .nav.nav-tabs li > button,
 .nav-page .nav.nav-pills li > button {
@@ -7900,6 +7868,10 @@ body > #body-container {
   background-image: linear-gradient(to bottom, #ffffff, #f7f7f7);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff7f7f7', GradientType=0);
+}
+
+.box .box-content.box-table table thead tr th,.box .box-content.box-table table tbody tr td {
+  text-align: center;
 }
 .box .box-content.btn-group-box button.btn,
 .box .box-content .btn-group-box button.btn,
