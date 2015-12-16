@@ -20,14 +20,7 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: labInstance, field: 'area', 'error')} required">
-	<label for="area">
-		<g:message code="lab.area.label" default="Investigation Area" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="area" required="" value="${labInstance?.area}"/>
-
-</div>
+<g:select name="area" from="${laboratorio.Area.list()}" optionKey="id" optionValue="name" size="5" value="${labInstance?.area}"/>
 
 <div class="fieldcontain ${hasErrors(bean: labInstance, field: 'carrer', 'error')} required">
 	<label for="carrer">

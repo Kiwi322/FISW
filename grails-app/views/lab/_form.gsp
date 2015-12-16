@@ -5,9 +5,9 @@
 		<fieldset>
 			<legend><g:message code="default.sign.up.label.personal.information"  /></legend><br>
 			<div class="control-group ">
-			    <label class="control-label"><g:message code="lab.username.label" default="Username" /> <span class="required">*</span></label>
+			    <label class="control-label"><g:message code="lab.email.label" default="Email" /> <span class="required">*</span></label>
 			    <div class="controls">
-					<g:textField name="username" class="span4" required="" value="${labInstance?.username}" autocomplete="false"/>
+					<g:textField name="email" class="span4" required="" value="${labInstance?.username}" autocomplete="false"/>
 			    </div>
 			</div>
 			<div class="control-group ">
@@ -36,12 +36,7 @@
 	<div class="span7">
 		<fieldset>
 			<legend><g:message code="default.sign.up.label.career.information"  /></legend><br>
-			<div class="control-group ">
-			    <label class="control-label"><g:message code="lab.area.label" default="Investigation Area" /><span class="required">*</span></label>
-			    <div class="controls">
-					<g:textField name="area" class="span4"  required="" value="${labInstance?.area}" autocomplete="false"/>
-			    </div>
-			</div>
+
 			<div class="control-group ">
 			    <label class="control-label"><g:message code="lab.carrer.label" default="Carrer" /><span class="required">*</span></label>
 			    <div class="controls">
@@ -309,11 +304,18 @@
 			 	</div>
 			</div>
 			<div class="control-group ">
-			    <label class="control-label"><g:message code="lab.university.label" default="University" /><span class="required">*</span></label>
-			    <div class="controls">
-			    	<g:textField name="university" class="span4" required="" value="${labInstance?.university}" autocomplete="false"/>
-			    </div>
-			</div>
+                            <label class="control-label"><g:message code="lab.university.label" default="University" /><span class="required">*</span></label>
+                            <div class="controls">
+                                <g:textField name="university" class="span4" required="" value="${labInstance?.university}" autocomplete="false"/>
+                            </div>
+                        </div>
+                        <div class="control-group ">
+                            <label class="control-label"><g:message code="lab.area.label" default="Area" /><span class="required">*</span></label>
+                            <div class="controls">
+                                <g:select name="area" from="${laboratorio.Area.list()}" optionKey="id" optionValue="name" size="5" value="${labInstance?.area}"/>
+                            </div>
+                        </div>
+                     
 		</fieldset>
 	</div>
 </div>

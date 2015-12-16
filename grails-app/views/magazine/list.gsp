@@ -34,7 +34,7 @@
 						<td><g:link action="download" id="${magazineInstance.id}">${magazineInstance.filename}</g:link></td>
 						<td><g:formatDate date="${magazineInstance.uploadDate}" /></td>
 						
-						<td>${fieldValue(bean: magazineInstance, field: "area")}</td>
+						<td>${fieldValue(bean: magazineInstance.area, field: "name")}</td>
 					
 						<td>${fieldValue(bean: magazineInstance, field: "author")}</td>
 					

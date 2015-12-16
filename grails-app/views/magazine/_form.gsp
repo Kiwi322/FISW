@@ -2,14 +2,13 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: magazineInstance, field: 'area', 'error')} required">
-	<label for="area">
-		<g:message code="magazine.area.label" default="Area" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="area" required="" value="${magazineInstance?.area}"/>
-
+<div class="control-group ">
+    <label class="control-label"><g:message code="lab.area.label" default="Area" /><span class="required">*</span></label>
+    <div class="controls">
+        <g:select name="area" from="${laboratorio.Area.list()}" optionKey="id" optionValue="name" size="5" value="${labInstance?.area}"/>
+    </div>
 </div>
+
 
 <div class="fieldcontain ${hasErrors(bean: magazineInstance, field: 'author', 'error')} required">
 	<label for="author">

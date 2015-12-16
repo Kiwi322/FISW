@@ -3,11 +3,11 @@
 
 
 <div class="fieldcontain ${hasErrors(bean: labInstance, field: 'username', 'error')} required">
-	<label for="username">
-		<g:message code="lab.username.label" default="Username" />
+	<label for="email">
+		<g:message code="lab.email.label" default="Username" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="username" required="" value="${labInstance?.username}"/>
+	<g:textField name="email" required="" value="${labInstance?.username}"/>
 
 </div>
 
@@ -73,14 +73,8 @@
 	<g:checkBox name="passwordExpired" value="${labInstance?.passwordExpired}" />
 
 </div>
-<div class="fieldcontain ${hasErrors(bean: labInstance, field: 'area', 'error')} required">
-	<label for="area">
-		<g:message code="lab.area.label" default="Investigation Area" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="area" required="" value="${labInstance?.area}"/>
 
-</div>
+<g:select name="area" from="${laboratorio.Area.list()}" optionKey="id" optionValue="name" size="5" value="${labInstance?.area}"/>
 
 <div class="fieldcontain ${hasErrors(bean: labInstance, field: 'carrer', 'error')} required">
 	<label for="carrer">

@@ -18,3 +18,26 @@
 .hidden-navBar{
 	display: none;
 }
+
+.download-modal{
+	font-size: 20pt;
+	color: #6F6F6F;
+	text-decoration: none;
+}
+
+.download-pointer{
+	cursor: pointer;
+}
+
+.flex{
+	display: flex;
+	justify-content: center;
+}
+
+.align-self{
+	align-self: center;
+}
+
+.auto-width{
+	width: auto;
+}
