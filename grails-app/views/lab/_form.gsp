@@ -7,7 +7,7 @@
 			<div class="control-group ">
 			    <label class="control-label"><g:message code="lab.email.label" default="Email" /> <span class="required">*</span></label>
 			    <div class="controls">
-					<g:textField name="email" class="span4" required="" value="${labInstance?.username}" autocomplete="false"/>
+					<g:textField name="username" class="span4" required="" value="${labInstance?.username}" autocomplete="false"/>
 			    </div>
 			</div>
 			<div class="control-group ">
