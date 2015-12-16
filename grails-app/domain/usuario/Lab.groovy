@@ -9,7 +9,8 @@ class Lab extends Usuario {
     String university
     String country
     static hasOne = [area: Area]
-    static hasMany = [books: Book,conferences: Conference,magazines: Magazine,postgradutes: Postgraduate,projects: Project,tesis: Tesis]
+    static mappedBy = [tutor:"tutor", progress: "owner"]
+    static hasMany = [books: Book,conferences: Conference,magazines: Magazine,postgradutes: Postgraduate,projects: Project,tesis: Tesis,tutor :Tesisprogress, progress :Tesisprogress]
 
     static constraints = {
         nombres(blank: false, nullable: false)

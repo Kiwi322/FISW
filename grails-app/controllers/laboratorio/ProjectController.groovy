@@ -46,6 +46,6 @@ class ProjectController {
             projectInstance.owner= springSecurityService.getCurrentUser()
             projectInstance.save()
         }
-        redirect (action:'list')
+        redirect (controller:'lab', action:"show", id:springSecurityService.getCurrentUserId())
     }    
 }

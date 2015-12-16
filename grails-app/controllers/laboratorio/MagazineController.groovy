@@ -46,6 +46,6 @@ class MagazineController {
             magazineInstance.owner= springSecurityService.getCurrentUser()
             magazineInstance.save()
         }
-        redirect (action:'list')
+        redirect (controller:'lab', action:"show", id:springSecurityService.getCurrentUserId())
     }    
 }

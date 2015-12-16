@@ -46,6 +46,6 @@ class ConferenceController {
             conferenceInstance.owner= springSecurityService.getCurrentUser()
             conferenceInstance.save()
         }
-        redirect (action:'list')
+        redirect (controller:'lab', action:"show", id:springSecurityService.getCurrentUserId())
     }    
 }

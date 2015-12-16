@@ -14,7 +14,7 @@
                 			<legend style="margin: 0;"><g:fieldValue bean="${labInstance}" field="nombres"/> <g:fieldValue bean="${labInstance}" field="apellidos"/></legend><br>
                 		</div>
                 	</div>
-                    <g:if test="${labInstance.username.toString() == sec.loggedInUserInfo(field:'username').toString()}">
+                    <g:if test="${labInstance.id == applicationContext.springSecurityService.getCurrentUserId() }">
                         <div class="row">
                             <div class="span16">
                             <g:form url="[resource:labInstance, action:'delete']" method="DELETE">
@@ -120,6 +120,7 @@
 	                		</div>
                 		</div>
                 	</div>
+                    <g:if test="${labInstance.id == applicationContext.springSecurityService.getCurrentUserId() }">
                     <div class="row">
                         <div class="span16">
                             <div class="box flex">
@@ -130,11 +131,13 @@
                                         <button onclick="window.location='<g:createLink class="create" controller="book" action="index"/>'" class="btn auto-width"><i class="icon-plus icon-large"></i><br/>Libro</button>
                                         <button onclick="window.location='<g:createLink class="create" controller="magazine" action="index"/>'" class="btn auto-width"><i class="icon-plus icon-large"></i><br/>Revista</button>
                                         <button onclick="window.location='<g:createLink class="create" controller="conference" action="index"/>'" class="btn auto-width"><i class="icon-plus icon-large"></i><br/>Conferencia</button>
+                                        <button onclick="window.location='<g:createLink class="create" controller="tesisprogress" action="index"/>'" class="btn auto-width"><i class="icon-plus icon-large"></i><br/>Avance de tesis</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+               </g:if>
                 	<div class="row">
                         <div class="span8">
                             <div class="box">
@@ -558,6 +561,41 @@
                             </div>
                         </div>
                     </div>
+                    <g:if test="${labInstance.id == applicationContext.springSecurityService.getCurrentUserId() }">
+
+                        <div class="row">
+                        <div class="span16">
+                        <div class="box">
+                                <div class="box-header">
+                                <i class="icon-book"></i> 
+                                <h5>Avances de tesis</h5> 
+                                </div>
+                                <div class="box-content box-table">
+                                    <table class="table table-hover tablesorter">
+                                        <thead>
+                                            <tr>
+                                                <th>Fecha de Subida</th>
+                                                <th>Nombre del archivo</th>
+                                                <th>Link</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                <g:each in="${labInstance.progress}" status="i" var="tesisprogressInstance">
+                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                        <td><g:link controller="tesisprogress" action="show" id="${tesisprogressInstance.id}"> <g:formatDate date="${tesisprogressInstance.uploadDate}" /></g:link></td>
+                        <td><g:link controller="tesisprogress" action="download" id="${tesisprogressInstance.id}">${tesisprogressInstance.filename}</g:link></td>
+                        <td><g:fieldValue bean="${tesisprogressInstance}" field="link"/></td>
+
+                                    
+                    </tr>
+                </g:each>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </g:if>
                 </div>  
         </div>
             <!-- Modal -->
