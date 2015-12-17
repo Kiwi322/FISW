@@ -1,20 +1,21 @@
 <%@ page import="usuario.Lab" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'lab.label', default: 'Lab')}" />
-		<title><g:fieldValue bean="${labInstance}" field="nombres"/> <g:fieldValue bean="${labInstance}" field="apellidos"/></title>
-	</head>
-	<body>
-		<div class="page-container">
-				<div class="container">
-                	<div class="row">
-                		<div class="span16">
-                			<legend style="margin: 0;"><g:fieldValue bean="${labInstance}" field="nombres"/> <g:fieldValue bean="${labInstance}" field="apellidos"/></legend><br>
-                		</div>
-                	</div>
-                    <g:if test="${labInstance.id == applicationContext.springSecurityService.getCurrentUserId() }">
+    <head>
+        <meta name="layout" content="main">
+        <g:set var="entityName" value="${message(code: 'lab.label', default: 'Lab')}" />
+        <title><g:fieldValue bean="${labInstance}" field="nombres"/> <g:fieldValue bean="${labInstance}" field="apellidos"/></title>
+    </head>
+    <body>
+        <div class="page container">
+                <div class="container">
+                    <div class="row">
+                        <div class="span16">
+                            <legend style="margin: 0;"><g:fieldValue bean="${labInstance}" field="nombres"/> <g:fieldValue bean="${labInstance}" field="apellidos"/></legend><br>
+                        </div>
+                    </div>
+                    
+                    <sec:ifAnyGranted roles="ROLE_ADMIN">
                         <div class="row">
                             <div class="span16">
                             <g:form url="[resource:labInstance, action:'delete']" method="DELETE">
@@ -24,103 +25,99 @@
                             </g:form>
                             </div>
                         </div>
-                    </g:if>
-                	<sec:ifAnyGranted roles="ROLE_ADMIN">
-						<div class="row">
-							<div class="span16">
-							<g:form url="[resource:labInstance, action:'delete']" method="DELETE">
-									<g:link class="btn icon-pencil" action="edit" resource="${labInstance}"></g:link>
-									<label class="btn" for="deleteButton"><i class="icon-trash"></i></label>
-									<input id="deleteButton" type="submit"  style="display: none;" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-							</g:form>
-							</div>
-						</div>
-					</sec:ifAnyGranted>
-                	<div class="row">
-                		<div class="span5">
-                			<div class="box">
-                				<div class="box-content">
-                					<img src="https://placehold.it/420x420">
-                					<div class="box-content box-list collapse in" >
-	                					<ul>
-	                						<li>Editar informacion personal</li>
-	                						<li>Opcion 2</li>
-	                						<li>opcion 3</li>
-	                						
-											<sec:ifAnyGranted roles="ROLE_ADMIN">
-												<g:if test="${labInstance?.accountLocked}">
-												<li>
-													<span style="color:red;" id="accountLocked-label" class="property-label"><g:message code="lab.accountLocked.label" default="Account Locked"/></span>
-												</li>
-												</g:if>
-												<g:else>
-													<li>
-													<span style="color:green;" id="accountLocked-label" class="property-label"><g:message code="lab.accountUnlocked.label" default="Account Unlocked"/></span>
-												</li>
-												</g:else>
-											</sec:ifAnyGranted>
-	                					</ul>
-	                				</div>	
-                				</div>
-                			</div>
-                		</div>
-                		<div class="span1"></div>
-                		<div class="span10">
-	                		<div class="box">
-	                			<div class="box-content">
-	                				<g:if test="${labInstance?.username}">
-		                				<legend class="header">
-			                				<g:message code="lab.email.label" default="Email" />
-			                			</legend>
-			                			<div class="box-content">
-			                				<g:fieldValue bean="${labInstance}" field="username"/>
-			                			</div>
-			                		</g:if>
-			                		<g:if test="${labInstance?.country}">
-		                				<legend class="header">
-			                				<g:message code="lab.country.label" default="Country" />
-			                			</legend>
-			                			<div class="box-content">
-			                				<g:fieldValue bean="${labInstance}" field="country"/>
-			                			</div>
-			                		</g:if>
-			                		<g:if test="${labInstance?.carrer}">
-		                				<legend class="header">
-			                				<g:message code="lab.carrer.label" default="Career" />
-			                			</legend>
-			                			<div class="box-content">
-			                				<g:fieldValue bean="${labInstance}" field="carrer"/>
-			                			</div>
-			                		</g:if>
-			                		<g:if test="${labInstance?.area}">
-		                				<legend class="header">
-			                				<g:message code="lab.area.label" default="Area" />
-			                			</legend>
-			                			<div class="box-content">
-			                				<g:fieldValue bean="${labInstance.area}" field="name"/>
-			                			</div>
-			                		</g:if>
-			                		<g:if test="${labInstance?.position}">
-		                				<legend class="header">
-			                				<g:message code="lab.position.label" default="Position" />
-			                			</legend>
-			                			<div class="box-content">
-			                				<g:fieldValue bean="${labInstance}" field="position"/>
-			                			</div>
-			                		</g:if>		                			
-			                		<g:if test="${labInstance?.university}">
-		                				<legend class="header">
-			                				<g:message code="lab.university.label" default="University" />
-			                			</legend>
-			                			<div class="box-content">
-			                				<g:fieldValue bean="${labInstance}" field="university"/>
-			                			</div>
-			                		</g:if>		
-		                		</div>
-	                		</div>
-                		</div>
-                	</div>
-                    <g:if test="${labInstance.id == applicationContext.springSecurityService.getCurrentUserId() }">
+                    </sec:ifAnyGranted>
+                    <div class="row">
+                        <div class="span5">
+                            <div class="box">
+                                <div class="box-content">
+                                    <img src="https://placehold.it/420x420">
+                                    <div class="box-content box-list collapse in" >
+                                        <ul>
+                                            <g:if test="${labInstance.username.toString() == sec.loggedInUserInfo(field:'username').toString()}">
+                                                <g:form url="[resource:labInstance, action:'delete']" method="DELETE">
+                                   
+                                    
+                            
+                                                     <li style="text-align: center;"><g:link class="btn" action="edit" resource="${labInstance}">Editar informacion personal</g:link>  <label class="btn btn-danger" for="deleteButton"><i class="icon-trash"></i></label></li>
+                                                     <input id="deleteButton" type="submit"  style="display: none;" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                                                 </g:form>
+                                            </g:if>
+                                            <li>Opcion 2</li>
+                                            <li>opcion 3</li>
+                                            
+                                            <sec:ifAnyGranted roles="ROLE_ADMIN">
+                                                <g:if test="${labInstance?.accountLocked}">
+                                                <li>
+                                                    <span style="color:red;" id="accountLocked-label" class="property-label"><g:message code="lab.accountLocked.label" default="Account Locked"/></span>
+                                                </li>
+                                                </g:if>
+                                                <g:else>
+                                                    <li>
+                                                    <span style="color:green;" id="accountLocked-label" class="property-label"><g:message code="lab.accountUnlocked.label" default="Account Unlocked"/></span>
+                                                </li>
+                                                </g:else>
+                                            </sec:ifAnyGranted>
+                                        </ul>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span1"></div>
+                        <div class="span10">
+                            <div class="box">
+                                <div class="box-content">
+                                    <g:if test="${labInstance?.username}">
+                                        <legend class="header">
+                                            <g:message code="lab.email.label" default="Email" />
+                                        </legend>
+                                        <div class="box-content">
+                                            <g:fieldValue bean="${labInstance}" field="username"/>
+                                        </div>
+                                    </g:if>
+                                    <g:if test="${labInstance?.country}">
+                                        <legend class="header">
+                                            <g:message code="lab.country.label" default="Country" />
+                                        </legend>
+                                        <div class="box-content">
+                                            <g:fieldValue bean="${labInstance}" field="country"/>
+                                        </div>
+                                    </g:if>
+                                    <g:if test="${labInstance?.carrer}">
+                                        <legend class="header">
+                                            <g:message code="lab.carrer.label" default="Career" />
+                                        </legend>
+                                        <div class="box-content">
+                                            <g:fieldValue bean="${labInstance}" field="carrer"/>
+                                        </div>
+                                    </g:if>
+                                    <g:if test="${labInstance?.area}">
+                                        <legend class="header">
+                                            <g:message code="lab.area.label" default="Area" />
+                                        </legend>
+                                        <div class="box-content">
+                                            <g:fieldValue bean="${labInstance.area}" field="name"/>
+                                        </div>
+                                    </g:if>
+                                    <g:if test="${labInstance?.position}">
+                                        <legend class="header">
+                                            <g:message code="lab.position.label" default="Position" />
+                                        </legend>
+                                        <div class="box-content">
+                                            <g:fieldValue bean="${labInstance}" field="position"/>
+                                        </div>
+                                    </g:if>                                 
+                                    <g:if test="${labInstance?.university}">
+                                        <legend class="header">
+                                            <g:message code="lab.university.label" default="University" />
+                                        </legend>
+                                        <div class="box-content">
+                                            <g:fieldValue bean="${labInstance}" field="university"/>
+                                        </div>
+                                    </g:if>     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="span16">
                             <div class="box flex">
@@ -131,14 +128,13 @@
                                         <button onclick="window.location='<g:createLink class="create" controller="book" action="index"/>'" class="btn auto-width"><i class="icon-plus icon-large"></i><br/>Libro</button>
                                         <button onclick="window.location='<g:createLink class="create" controller="magazine" action="index"/>'" class="btn auto-width"><i class="icon-plus icon-large"></i><br/>Revista</button>
                                         <button onclick="window.location='<g:createLink class="create" controller="conference" action="index"/>'" class="btn auto-width"><i class="icon-plus icon-large"></i><br/>Conferencia</button>
-                                        <button onclick="window.location='<g:createLink class="create" controller="tesisprogress" action="index"/>'" class="btn auto-width"><i class="icon-plus icon-large"></i><br/>Avance de tesis</button>
+                                        <button onclick="window.location='<g:createLink class="create" controller="tesisprogress" action="index"/>'" class="btn auto-width"><i class="icon-plus icon-large"></i><br/>Avance</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-               </g:if>
-                	<div class="row">
+                    <div class="row">
                         <div class="span8">
                             <div class="box">
                                 <div class="box-header">
@@ -206,7 +202,7 @@
                                                                 </g:if>
                                                             </div>
                                                         </div>
-                                                        <g:link controller="tesis" action="download" id="${tesisInstance.id}" class="pull-right download-modal"><i class="icon-download"></i>Descargar documento</g:link>
+                                                        <g:link controller="tesis" action="download" id="${tesisInstance.id}" class="pull-right download-modal"><i class="icon-download"></i> Descargar documento</g:link>
                                                       </div>
                                                      <!--<div class="modal-footer">
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -292,7 +288,7 @@
                                                                 </g:if>
                                                             </div>
                                                         </div>
-                                                        <g:link controller="book" action="download" id="${bookInstance.id}" class="pull-right download-modal">Descargar documento <i class="icon-download"></i></g:link>
+                                                        <g:link controller="book" action="download" id="${bookInstance.id}" class="pull-right download-modal"> Descargar documento <i class="icon-download"></i></g:link>
                                                       </div>
                                                      <!--<div class="modal-footer">
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -308,7 +304,7 @@
                             </div>
                         </div>
                     </div>
-                	<div class="row">
+                    <div class="row">
                         <div class="span8">
                             <div class="box">
                                 <div class="box-header">
@@ -379,7 +375,7 @@
                                                                 </g:if>
                                                             </div>
                                                         </div>
-                                                        <g:link controller="conference" action="download" id="${conferenceInstance.id}" class="pull-right download-modal">Descargar documento <i class="icon-download"></i></g:link>
+                                                        <g:link controller="conference" action="download" id="${conferenceInstance.id}" class="pull-right download-modal"> Descargar documento <i class="icon-download"></i></g:link>
                                                       </div>
                                                      <!--<div class="modal-footer">
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -457,7 +453,7 @@
                                                                 </g:if>
                                                             </div>
                                                         </div>
-                                                        <g:link controller="magazine" action="download" id="${magazineInstance.id}" class="pull-right download-modal">Descargar documento <i class="icon-download"></i></g:link>
+                                                        <g:link controller="magazine" action="download" id="${magazineInstance.id}" class="pull-right download-modal"> Descargar documento <i class="icon-download"></i></g:link>
                                                       </div>
                                                      <!--<div class="modal-footer">
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -545,7 +541,7 @@
                                                                 </g:if>
                                                             </div>
                                                         </div>
-                                                        <g:link controller="magazine" action="download" id="${projectInstance.id}" class="pull-right download-modal">Descargar documento <i class="icon-download"></i></g:link>
+                                                        <g:link controller="project" action="download" id="${projectInstance.id}" class="pull-right download-modal"> Descargar documento <i class="icon-download"></i></g:link>
                                                       </div>
                                                      <!--<div class="modal-footer">
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -596,6 +592,14 @@
                         </div>
                     </div>
                 </g:if>
+                </div>  
+            </div>
+        </div>
+    </body>
+</html>
+
+
+                    
                 </div>  
         </div>
             <!-- Modal -->
