@@ -1,5 +1,5 @@
-
 <%@ page import="laboratorio.Tesisprogress" %>
+<%@ page import="laboratorio.Comment" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,18 +8,13 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#show-tesisprogress" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul><li><g:link class="create" action="index">Subir nuevo avance</g:link></li></ul>
-			<ul><li><g:link class="list" action="list">Ver avances</g:link></li></ul>
-		</div>
 		<div id="show-tesisprogress" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list tesisprogress">
-			
+
 				<g:if test="${tesisprogressInstance?.link}">
 				<li class="fieldcontain">
 					<span id="link-label" class="property-label"><g:message code="tesisprogress.link.label" default="Link" /></span>
@@ -48,6 +43,7 @@
 				</li>
 				</g:if>
 
+
 								<g:if test="${tesisprogressInstance?.cotutor}">
 				<li class="fieldcontain">
 					<span id="cotutor-label" class="property-label"><g:message code="tesisprogress.cotutor.label" default="Cotutor" /></span>
@@ -57,6 +53,8 @@
 				</li>
 				</g:if>
 			
+				<li><g:link controller="tesisprogress" action="download" id="${tesisprogressInstance.id}">${tesisprogressInstance.filename}</g:link></li>
+
 				<g:if test="${tesisprogressInstance?.uploadDate}">
 				<li class="fieldcontain">
 					<span id="uploadDate-label" class="property-label"><g:message code="tesisprogress.uploadDate.label" default="Upload Date" /></span>
@@ -96,14 +94,23 @@
                             </div>				
 			
 			</ol>
-			<g:form url="[resource:tesisprogressInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${tesisprogressInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+
+				<g:form url="[resource:commentInstance, action:'save']" >
+					<fieldset class="form">
+						<div class="fieldcontain ${hasErrors(bean: commentInstance, field: 'body', 'error')} required">
+				<label for="body">
+					<span class="required-indicator">*</span>
+				</label>
+				<g:textArea name="body" cols="40" rows="5" maxlength="8000" required="" value="${commentInstance?.body}"/>
+
+				<g:hiddenField name="tesisprogress.id" value="${tesisprogressInstance?.id}" />
+
+
+			</div>
 				</fieldset>
-				<li class="add">
-				<g:link controller="comment" action="create" params="['tesisprogress.id': tesisprogressInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'comment.label', default: 'Comment')])}</g:link>
-				</li>
+				<fieldset class="buttons">
+					<g:submitButton name="create" class="../comment/save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+				</fieldset>
 			</g:form>
 		</div>
 

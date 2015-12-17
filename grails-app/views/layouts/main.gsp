@@ -31,44 +31,7 @@
 					<div id="app-nav-top-bar" class="nav-collapse">
 						<ul class="nav">
 
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">TRY ME!
-									<b class="caret hidden-phone"></b>
-								</a>
-								<ul class="dropdown-menu">
-									<li>
-										<a href="dashboard.html">Dashboard</a>
-									</li>
-									<li>
-										<a href="form.html">Form</a>
-									</li>
-									<li>
-										<a href="custom-view.html">Custom View</a>
-									</li>
-									<li>
-										<a href="login.html">Login Page</a>
-									</li>
-								</ul>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">CHANGE NAV BAR
-									<b class="caret hidden-phone"></b>
-								</a>
-								<ul class="dropdown-menu">
-									<li>
-										<a href="demo-horizontal-nav.html">Horizontal</a>
-									</li>
-									<li>
-										<a href="demo-horizontal-fixed-nav.html">Horizontal Fixed</a>
-									</li>
-									<li>
-										<a href="demo-vertical-nav.html">Vertical</a>
-									</li>
-									<li>
-										<a href="demo-vertical-fixed-nav.html">Vertical Fixed</a>
-									</li>
-								</ul>
-							</li>
+							
 
 						</ul>
 						<ul class="nav pull-right">
@@ -158,7 +121,7 @@
 						<div class="span7">
 							<header class="page-header">
 								<h3><g:layoutTitle default="Some Title" /><br/>
-									<small>Additional Bootstrap Components</small>
+									
 								</h3>
 							</header>
 						</div>
@@ -166,7 +129,7 @@
 							<div class="span9">
 								<ul class="nav nav-pills">
 									<li> 
-										<a href="http://localhost:8080/laboratorio"><i class="icon-home icon-large"></i></a>
+										<a href="http://localhost:8080/<small>Additional Bootstrap Components</small>oratorio"><i class="icon-home icon-large"></i></a>
 									</li>
 								</ul>
 								<ul class="nav nav-tabs">

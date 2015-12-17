@@ -56,4 +56,11 @@ class TesisprogressController {
         }
         redirect (controller:'lab', action:"show", id:springSecurityService.getCurrentUserId())
     }    
+    def save() {
+        def commentInstance = new Comment(params)
+        commentInstance.properties=params
+        commentInstance.owner=springSecurityService.getCurrentUser()
+        commentInstance.save()
+        redirect (action:"show", id:params.tesisprogress.id)
+        }    
 }

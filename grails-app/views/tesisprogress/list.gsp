@@ -31,7 +31,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                <g:each in="${tesisprogressInstanceList}" status="i" var="tesisprogressInstance">
+                <g:each in="${Tesisprogress.findAllByTutor(applicationContext.springSecurityService.getCurrentUser())}" status="i" var="tesisprogressInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 						<td><g:link action="show" id="${tesisprogressInstance.id}"> <g:formatDate date="${tesisprogressInstance.uploadDate}" /></g:link></td>
 						<td><g:link action="download" id="${tesisprogressInstance.id}">${tesisprogressInstance.filename}</g:link></td>

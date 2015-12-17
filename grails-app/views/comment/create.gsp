@@ -1,3 +1,4 @@
+<%@ page import="laboratorio.Comment" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -25,6 +26,7 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
+			${tesisprogress}
 			<g:form url="[resource:commentInstance, action:'save']" >
 				<fieldset class="form">
 					<g:render template="form"/>

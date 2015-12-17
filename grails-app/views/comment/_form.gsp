@@ -11,22 +11,4 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: commentInstance, field: 'owner', 'error')} required">
-	<label for="owner">
-		<g:message code="comment.owner.label" default="Owner" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="owner" name="owner.id" from="${usuario.Lab.list()}" optionKey="id" required="" value="${commentInstance?.owner?.id}" class="many-to-one"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: commentInstance, field: 'tesisprogress', 'error')} required">
-	<label for="tesisprogress">
-		<g:message code="comment.tesisprogress.label" default="Tesisprogress" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="tesisprogress" name="tesisprogress.id" from="${laboratorio.Tesisprogress.list()}" optionKey="id" required="" value="${commentInstance?.tesisprogress?.id}" class="many-to-one"/>
-
-</div>
-
-
+<g:hiddenField name="tesisprogress" value="${tesisprogressid}" />
