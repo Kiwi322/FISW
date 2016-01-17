@@ -27,7 +27,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="dashboard.html" class="brand"><i class="icon-leaf">LABMMDA</i></a>
+					<a href="dashboard.html" class="brand"><i class="icon-leaf">LABMMBA</i></a>
 					<div id="app-nav-top-bar" class="nav-collapse">
 						<ul class="nav">
 
