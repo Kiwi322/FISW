@@ -71,6 +71,8 @@
 
           that.$element
             .addClass('in')
+            .removeClass('hidden')
+            .addClass('visible')
             .attr('aria-hidden', false)
             .focus()
 
@@ -104,6 +106,8 @@
 
         this.$element
           .removeClass('in')
+          .removeClass('visible')
+          .addClass('visible')
           .attr('aria-hidden', true)
 
         $.support.transition && this.$element.hasClass('fade') ?

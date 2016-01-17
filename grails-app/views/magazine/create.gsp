@@ -6,21 +6,25 @@
 		<title>Upload New Document</title>
 	</head>
 	<body>
-		<div class="nav" role="navigation">
-			<ul><li><g:link class="list" action="list">Document List</g:link></li></ul>
-		</div>
-		<div class="content scaffold-create" role="main">
-			<h1>Upload New Document</h1>
-			<g:if test="${flash.message}"><div class="message" role="status">${flash.message}</div></g:if>
+		<div class="page container">
+			<div class="container">
+			
 
-			<g:form url="[resource:magazineInstance, action:'upload']"  enctype="multipart/form-data">
-				<fieldset class="form">
+			<g:form url="[resource:magazineInstance, action:'upload']"  enctype="multipart/form-data" class="form-horizontal">
+				<div class="container">
+					<div class="alert alert-block alert-info">
+	                    <p>
+	                       Ingresa la información de la nueva revista. Los campos marcados con asterisco son obligatorios.	
+	                    </p>
+	                </div>
 				<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:submitButton name="upload" class="save" value="Upload" />
-				</fieldset>
+
+				<footer id="submit-actions" class="form-actions">
+                        <button id="submit-button" type="submit" class="btn btn-primary" name="action" value="CONFIRM"><g:message code="default.button.save.label" default="Save"/></button>
+                    </footer>
+				</div>
 			</g:form>
+			</div>
 		</div>
 	</body>
 </html>

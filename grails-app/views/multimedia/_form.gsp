@@ -1,25 +1,39 @@
 <%@ page import="laboratorio.Multimedia" %>
 
+ <div class="row">
+	<div class="span7">
+		<fieldset>
+			<div class="control-group ">
+			    <label class="control-label"><g:message code="multimedia.name.label" default="Name" /> <span class="required">*</span></label>
+			    <div class="controls">
+					<g:textField  name="name" required="" value="${multimediaInstance?.name}" class="span4"  autocomplete="false"/>
+			    </div>
+			</div>			
+			
+		</fieldset>
+	</div>
+	<div class="span7">
+		<fieldset>
+			<div class="control-group ">
+			    <label class="control-label"><g:message code="multimedia.perfil.label" default="¿Es una foto de perfil?" /> <span class="required">*</span></label>
+			    <div class="controls">
+			         <g:checkBox name="profile" class="span4"/>
 
-<div class="fieldcontain ${hasErrors(bean: multimediaInstance, field: 'name', 'error')} required">
-	<label for="name">
-		<g:message code="multimedia.name.label" default="Name" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="name" required="" value="${multimediaInstance?.name}"/>
+			    </div>
+			</div>
+			<div class="control-group ">
+                <label class="control-label"><g:message code="tesis.document.label" default="Document" /> <span class="required">*</span></label>
+                <div class="controls">
+                	<input type="file" name="file" required="" class="span4" autocomplete="false"/>
 
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: tesisprogressInstance, field: 'tipe', 'error')} ">
-	<label for="tipe">
-		<g:message code="multimedia.perfil.label" default="Foto de perfil?" />
-		
-	</label>
-	<g:checkBox name="profile"/>
-</div>
-
-<g:hiddenField name="tipe" value="1" />
+                </div>
+            </div>
+            <g:hiddenField name="tipe" value="1" />
 
 <g:hiddenField name="username" value="${sec.username()}" />
+                     
+		</fieldset>
+	</div>
+</div>
 
-<input type="file" name="file" />
+	

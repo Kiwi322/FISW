@@ -8,6 +8,8 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
+	<div class="page container">
+			<div class="container">
 		<div id="show-tesisprogress" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -64,14 +66,22 @@
 				</li>
 				</g:if>
 </ul>
+							<style>
+							.visible{
+								visibility: visible;
+							}
 
+							.hidden{
+								visibility: hidden;
+							}
+							</style>
 							<div class="box">
                                 <div class="box-header">
                                 <i class="icon-book"></i> 
                                 <h5>Comentarios</h5> 
                                 </div>
                                 <div class="box-content box-table">
-                                    <table class="table table-hover tablesorter">
+                                    <table class="table table-hover tablesorter" style="table-layout:fixed">
                                         <thead>
                                             <tr>
                                                 <th>Autor</th>
@@ -81,11 +91,57 @@
                                         </thead>
                                         <tbody>
                                             <g:each in="${tesisprogressInstance.comments}" var="commentInstance">
-                                                <tr>
+                                                <tr data-target="#myModalTesis${commentInstance.id}" data-toggle="modal" class="download-pointer">
                                                     <td><g:link controller="lab" action="show" id="${commentInstance?.owner?.id}">${commentInstance?.owner?.encodeAsHTML()}</g:link></td>
                                                     <td><g:fieldValue bean="${commentInstance}" field="uploadDate"/></td>
-                                                    <td><g:fieldValue bean="${commentInstance}" field="body"/></td>
+                                                    <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><g:fieldValue bean="${commentInstance}" field="body"/></td>
                                                 </tr>
+                                                <!-- Modal -->
+                                                <div class="modal fade hidden" id="myModalTesis${commentInstance.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                  <div class="modal-dialog modal-lg" role="document">
+                                                    <div class="modal-content">
+                                                      <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title" id="myModalLabel">Comentario</h4>
+                                                      </div>
+                                                      <div class="modal-body">
+                                                        <div class="box">
+                                                            <div class="box-content">
+                                                                <g:if test="${commentInstance?.owner}">
+                                                                    <legend class="header">
+                                                                        <g:message code="Definir etiqueta" default="Autor" />
+                                                                    </legend>
+                                                                    <div class="box-content">
+                                                                        <g:fieldValue bean="${commentInstance}" field="owner"/>
+                                                                    </div>
+                                                                </g:if>
+                                                                <g:if test="${commentInstance?.uploadDate}">
+                                                                    <legend class="header">
+                                                                        <g:message code="Definir etiqueta" default="Fecha de subida" />
+                                                                    </legend>
+                                                                    <div class="box-content">
+                                                                        <g:fieldValue bean="${commentInstance}" field="uploadDate"/>
+                                                                    </div>
+                                                                </g:if>
+                                                                <g:if test="${commentInstance?.body}">
+                                                                    <legend class="header">
+                                                                        <g:message code="Definir etiqueta" default="Comentario" />
+                                                                    </legend>
+                                                                    <div class="box-content" style="word-wrap: break-word;">
+                                                                        <g:fieldValue bean="${commentInstance}" field="body"/>
+                                                                    </div>
+                                                                </g:if>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                      </div>
+                                                     <!--<div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                                      </div>-->
+                                                    </div>
+                                                  </div>
+                                                </div>
                                                 
                                             </g:each>
                                         </tbody>
@@ -99,9 +155,8 @@
 					<fieldset class="form">
 						<div class="fieldcontain ${hasErrors(bean: commentInstance, field: 'body', 'error')} required">
 				<label for="body">
-					<span class="required-indicator">*</span>
 				</label>
-				<g:textArea name="body" cols="40" rows="5" maxlength="8000" required="" value="${commentInstance?.body}"/>
+				<g:textArea class="span16" name="body" cols="40" rows="5" maxlength="8000" required="" value="${commentInstance?.body}"/>
 
 				<g:hiddenField name="tesisprogress.id" value="${tesisprogressInstance?.id}" />
 
@@ -113,6 +168,8 @@
 				</fieldset>
 			</g:form>
 		</div>
+	</div>
+</div>
 
 	</body>
 </html>
