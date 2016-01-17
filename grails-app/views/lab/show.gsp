@@ -30,7 +30,9 @@
                         <div class="span5">
                             <div class="box">
                                 <div class="box-content">
-                                    <img src="https://placehold.it/420x420">
+                                        
+                                        <g:img dir="images/profile/${labInstance.username.toString()}" file="pic.jpg" default="https://placehold.it/420x420"/>
+
                                     <div class="box-content box-list collapse in" >
                                         <ul>
                                             <g:if test="${labInstance.username.toString() == sec.loggedInUserInfo(field:'username').toString()}">
@@ -42,8 +44,8 @@
                                                      <input id="deleteButton" type="submit"  style="display: none;" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                                                  </g:form>
                                             </g:if>
-                                            <li>Opcion 2</li>
-                                            <li>opcion 3</li>
+                                            <li style="text-align: center;"><g:link class="btn" controller="multimedia" action="index"> Agregar Foto </g:link></li>
+                                            <li style="text-align: center;"><g:link class="btn"  controller="multimedia" action="video"> Agregar Video </g:link></li>
                                             
                                             <sec:ifAnyGranted roles="ROLE_ADMIN">
                                                 <g:if test="${labInstance?.accountLocked}">

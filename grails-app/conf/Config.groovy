@@ -138,12 +138,15 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 
 environments {
     development {
-        uploadFolder = "/home/rgamboa/Grails/FISW-upload"
+        uploadFolder = "/home/rgamboa/Grails/FISW-upload/"
+        imageFolder= "/home/rgamboa/Grails/fisw/web-app/images/profile/"
     }
     test {
-        uploadFolder = "/home/rgamboa/Grails/FISW-upload"
+        uploadFolder = "/home/rgamboa/Grails/FISW-upload/"
+        imageFolder= "/home/rgamboa/Grails/fisw/web-app/images/profile/"
     }
     production {
-        uploadFolder = "/home/rgamboa/Grails/FISW-upload"
+        uploadFolder = "/home/rgamboa/Grails/FISW-upload/"
+        imageFolder= "/home/rgamboa/Grails/fisw/web-app/images/profile/"
     }
 }

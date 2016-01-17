@@ -129,7 +129,7 @@
 							<div class="span9">
 								<ul class="nav nav-pills">
 									<li> 
-										<a href="http://localhost:8080/<small>Additional Bootstrap Components</small>oratorio"><i class="icon-home icon-large"></i></a>
+										<a href="http://localhost:8080/"><i class="icon-home icon-large"></i></a>
 									</li>
 								</ul>
 								<ul class="nav nav-tabs">
