@@ -38,12 +38,7 @@ class TesisprogressController {
     }
     def upload() {
         def file = request.getFile('file')
-        if(file.empty) {
-            def tesisprogressInstance = new Tesisprogress()
-            tesisprogressInstance.properties=params
-            tesisprogressInstance.owner= springSecurityService.getCurrentUser()
-            tesisprogressInstance.save()
-        } else {
+        if (file == null){
             def tesisprogressInstance = new Tesisprogress()
             tesisprogressInstance.properties=params
             tesisprogressInstance.filename = file.originalFilename
@@ -51,8 +46,12 @@ class TesisprogressController {
             file.transferTo(new File(tesisprogressInstance.fullPath))
             tesisprogressInstance.owner= springSecurityService.getCurrentUser()
             tesisprogressInstance.save()
-
-
+        }
+        else{
+            def tesisprogressInstance = new Tesisprogress()
+            tesisprogressInstance.properties=params
+            tesisprogressInstance.owner= springSecurityService.getCurrentUser()
+            tesisprogressInstance.save()
         }
         redirect (controller:'lab', action:"show", id:springSecurityService.getCurrentUserId())
     }    
