@@ -1,5 +1,7 @@
 package laboratorio
 
+import static org.springframework.http.HttpStatus.*
+import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured  
 
 @Secured(['IS_AUTHENTICATED_FULLY'])
@@ -29,6 +31,9 @@ class ProjectController {
             fileInputStream.close()
         }
     }   
+    def show(Project projectInstance) {
+        respond projectInstance
+    }
     def list() {
         params.max = 10
         [projectInstanceList: Project.list(params), projectInstanceTotal: Project.count()]
