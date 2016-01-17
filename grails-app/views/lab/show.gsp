@@ -160,7 +160,7 @@
                                                     <td><g:fieldValue bean="${tesisInstance}" field="cotutor"/></td>
                                                 </tr>
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="myModalBook1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                                <div class="modal fade" id="myModalTesis${tesisinstance.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                                   <div class="modal-dialog modal-lg" role="document">
                                                     <div class="modal-content">
                                                       <div class="modal-header">
