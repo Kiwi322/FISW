@@ -35,7 +35,7 @@
 
                                     <div class="box-content box-list collapse in" >
                                         <ul>
-                                            <g:if test="${labInstance.username.toString() == sec.loggedInUserInfo(field:'username').toString()}">
+                                            <g:if test="${labInstance.id == applicationContext.springSecurityService.getCurrentUserId() }">
                                                 <g:form url="[resource:labInstance, action:'delete']" method="DELETE">
                                    
                                     
@@ -65,6 +65,7 @@
                             </div>
                         </div>
                         <div class="span1"></div>
+                        
                         <div class="span10">
                             <div class="box">
                                 <div class="box-content">
@@ -120,6 +121,7 @@
                             </div>
                         </div>
                     </div>
+                    <g:if test="${labInstance.id == applicationContext.springSecurityService.getCurrentUserId() }">
                     <div class="row">
                         <div class="span16">
                             <div class="box flex">
@@ -136,6 +138,7 @@
                             </div>
                         </div>
                     </div>
+                    </g:if>
                     <div class="row">
                         <div class="span8">
                             <div class="box">
@@ -160,7 +163,7 @@
                                                     <td><g:fieldValue bean="${tesisInstance}" field="cotutor"/></td>
                                                 </tr>
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="myModalTesis${tesisinstance.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                                <div class="modal fade" id="myModalTesis${tesisInstance.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                                   <div class="modal-dialog modal-lg" role="document">
                                                     <div class="modal-content">
                                                       <div class="modal-header">
@@ -450,7 +453,7 @@
                                                                         <g:message code="magazine.area.label" default="area" />
                                                                     </legend>
                                                                     <div class="box-content">
-                                                                        <g:fieldValue bean="${magazineInstance.area}" field="name"/>
+                                                                        <g:fieldValue bean="${magazineInstance}" field="area"/>
                                                                     </div>
                                                                 </g:if>
                                                             </div>
