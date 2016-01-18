@@ -1,6 +1,7 @@
 package laboratorio
 import usuario.Lab
 class Project {
+    static searchable = true
 	String name
 	String position
 	String yearstart

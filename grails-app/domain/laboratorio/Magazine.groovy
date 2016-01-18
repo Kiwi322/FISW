@@ -2,6 +2,7 @@ package laboratorio
 import usuario.Lab
 
 class Magazine{
+    static searchable = true
 	String title
 	String author
 	String year

@@ -2,6 +2,7 @@ package laboratorio
 import usuario.Lab
 
 class Tesis {
+	static searchable = true
 	String name
 	String university
 	String country

@@ -41,15 +41,15 @@ class TesisprogressController {
         if (file == null){
             def tesisprogressInstance = new Tesisprogress()
             tesisprogressInstance.properties=params
-            tesisprogressInstance.filename = file.originalFilename
-            tesisprogressInstance.fullPath = grailsApplication.config.uploadFolder + tesisprogressInstance.filename
-            file.transferTo(new File(tesisprogressInstance.fullPath))
             tesisprogressInstance.owner= springSecurityService.getCurrentUser()
             tesisprogressInstance.save()
         }
         else{
             def tesisprogressInstance = new Tesisprogress()
             tesisprogressInstance.properties=params
+            tesisprogressInstance.filename = file.originalFilename
+            tesisprogressInstance.fullPath = grailsApplication.config.uploadFolder + tesisprogressInstance.filename
+            file.transferTo(new File(tesisprogressInstance.fullPath))
             tesisprogressInstance.owner= springSecurityService.getCurrentUser()
             tesisprogressInstance.save()
         }

@@ -2,6 +2,7 @@ package laboratorio
 import usuario.Lab
 
 class Conference{
+	static searchable = true
 	String name
 	String datestart
 	String datefinish

@@ -450,7 +450,7 @@
                                                                         <g:message code="magazine.area.label" default="area" />
                                                                     </legend>
                                                                     <div class="box-content">
-                                                                        <g:fieldValue bean="${magazineInstance}" field="area"/>
+                                                                        <g:fieldValue bean="${magazineInstance.area}" field="name"/>
                                                                     </div>
                                                                 </g:if>
                                                             </div>

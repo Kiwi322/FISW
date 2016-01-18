@@ -1,7 +1,7 @@
 package usuario
 import laboratorio.*
 class Lab extends Usuario {
-
+    static searchable = true
     String nombres
     String apellidos
     String position

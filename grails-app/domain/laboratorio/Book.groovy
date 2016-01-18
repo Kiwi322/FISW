@@ -1,6 +1,7 @@
 package laboratorio
 import usuario.Lab
 class Book{
+    static searchable = true
 	String title
 	String author
 	String year

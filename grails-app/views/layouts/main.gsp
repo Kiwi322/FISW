@@ -147,6 +147,10 @@
 										<g:link controller='lab' action="show" id="${sec.loggedInUserInfo(field: 'id')}"><g:message code="default.profile.label"/>
 										</g:link></li>
 									</sec:ifAnyGranted>
+									<li>
+									<a href="http://localhost:8080/searchable"><g:message code="default.search.label"/></a>
+									</li>
+
 								</ul>
 							</div>
 						</div>
