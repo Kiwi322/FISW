@@ -74,35 +74,20 @@
 							</g:link>
 						</li>
 						<li>
-							<a href="#">
-								<i class="icon-calendar icon-large"></i> Schedule
-							</a>
-						</li>
-						<li>
 							<g:link controller='lab' action='index'>
-								<i class="icon-map-marker icon-large"></i> <g:if test="${usuario.Lab.countByAccountLocked(true) >0}" > <b><g:message code="default.pending.user.label"/> </b></g:if>
+								<i class="icon-user icon-large"></i> <g:if test="${usuario.Lab.countByAccountLocked(true) >0}" > <b><g:message code="default.pending.user.label"/> </b></g:if>
 								<g:else> <g:message code="default.user.label"/> </g:else>
 							</g:link>
 						</li>
 						<li>
 							<g:link controller='lab' action='create'>
-								<i class="icon-tasks icon-large"></i> <g:message code="default.create.user.label"/>
+								<i class="icon-plus-sign icon-large"></i> <g:message code="default.create.user.label"/>
 							</g:link>
 						</li>
 						<li>
 							<g:link controller='tesis' action='list'>
-								<i class="icon-cogs icon-large"></i> <g:message code="default.create.tesis.label"/>
+								<i class="icon-tasks icon-large"></i> <g:message code="default.create.tesis.label"/>
 							</g:link>
-						</li>
-						<li>
-							<a href="#">
-								<i class="icon-list-alt icon-large"></i> Forms
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<i class="icon-bar-chart icon-large"></i> Charts
-							</a>
 						</li>
 					</ul>
 				</div>
