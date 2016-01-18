@@ -8,6 +8,9 @@ class TesisController {
     def index() {
         render view: "create"
     }
+    def show(Tesis tesisInstance) {
+        redirect (controller:'lab', action:"show", id:tesisInstance.owner.id)
+    }
     def download(long id) {
         Tesis tesisInstance = Tesis.get(id)
         if ( tesisInstance == null) {

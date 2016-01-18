@@ -7,6 +7,9 @@ class MagazineController {
     def springSecurityService
     def index() {
         render view: "create"
+    }  
+    def show(Magazine magazineInstance) {
+        redirect (controller:'lab', action:"show", id:magazineInstance.owner.id)
     }
     def download(long id) {
         Magazine magazineInstance = Magazine.get(id)

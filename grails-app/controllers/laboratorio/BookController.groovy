@@ -8,6 +8,9 @@ class BookController {
     def index() {
         render view: "create"
     }
+    def show(Book bookInstance) {
+        redirect (controller:'lab', action:"show", id:bookInstance.owner.id)
+    }
     def download(long id) {
         Book bookInstance = Book.get(id)
         if ( bookInstance == null) {

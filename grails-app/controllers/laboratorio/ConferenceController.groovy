@@ -8,6 +8,9 @@ class ConferenceController {
     def index() {
         render view: "create"
     }
+    def show(Conference conferenceInstance) {
+        redirect (controller:'lab', action:"show", id:conferenceInstance.owner.id)
+    }
     def download(long id) {
         Conference conferenceInstance = Conference.get(id)
         if ( conferenceInstance == null) {

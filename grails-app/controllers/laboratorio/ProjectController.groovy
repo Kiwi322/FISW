@@ -10,6 +10,7 @@ class ProjectController {
     def index() {
         render view: "create"
     }
+
     def download(long id) {
         Project projectInstance = Project.get(id)
         if ( projectInstance == null) {

@@ -67,7 +67,7 @@
 				<g:form url="[resource:collaboratorsInstance, controller:'collaborator', action:'save']" method="POST">		
 				<fieldset class="form">
 					<g:message code="tesisprogress.user.label" default="Agregar Colaborador" />
-					<g:select id="user" name="user.id" from="${usuario.Lab.list()}" optionKey="id" required="" optionValue="fullName" class="many-to-one"/>
+					<g:select id="user" name="user.id" from="${usuario.Lab.list()}" optionKey="id" required="" optionValue="nombres" class="many-to-one"/>
 					<g:hiddenField name="proj.id" value="${projectInstance?.id}" />
 				</fieldset>
 				<fieldset class="buttons">
