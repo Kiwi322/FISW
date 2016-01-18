@@ -29,7 +29,6 @@
 							<div class="container">
 								<div class="alert alert-block alert-info">
 				                    <p>
-				                      Modifica la informacion del usuario. Selecciona nuevamente el area.
 				                    </p>
 				                </div>
 							<g:render template="form_admin"/>
@@ -46,7 +45,6 @@
 							<div class="container">
 								<div class="alert alert-block alert-info">
 				                    <p>
-				                      Modifica tu informacion. Selecciona nuevamente tu area. 
 				                    </p>
 				                </div>
 							<g:render template="form_edit"/>
